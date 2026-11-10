@@ -6,6 +6,10 @@
 
 With the skill, the agent reads the plan meters and each session's current model, then checks today's prices and plan rules on the official pages, not from memory. It scores every chat 1-10 by what a mistake there costs and maps that score, plus how often the chat runs, to a model. It flags the traps: a flagship that is free only until a date, usage credits switched off, scheduled tasks that ignore your model choice. And it only downgrades a chat after checking it on that chat's real recent work, with a rollback rule written down.
 
+## Cheap by default, climbs by itself
+
+The default for a cost-conscious owner: every chat that is not a supervisor runs on the mid model at low or medium effort, and its instructions carry one escalation rule. Bulk reading goes to a small-model subagent. A hard step (a plan across many files, a bug after 2 failed tries, work for a paying client) goes to a top-model subagent at high effort for that one step, then back to base. Before anything irreversible (a customer message, ad spend, a deploy, a publish, a delete), a short top-model check of the exact action. Adaptive thinking already scales thinking per turn; a session cannot switch its own model, so the climb is done by delegation and reported ("checked with the strong model").
+
 ## See the difference
 
 > **Owner:** "A new flagship came out yesterday. Which chat gets it, which keeps Opus, which goes cheaper? Save without errors."
@@ -16,7 +20,7 @@ With the skill, the agent reads the plan meters and each session's current model
 
 **Skip it if** you are picking a model inside API code (use the `claude-api` skill) or for one single task.
 
-**Status:** new. Built for a real fleet of 20+ Claude desktop chats the day a new flagship model launched. Tested with and without the skill on 3 cases (who gets which model, "move everything to the small model", "switch my scheduled tasks and confirm"): 6/6 with it, 3.5/6 without. Plain instructions, no scripts, no network calls. MIT. Issues and suggestions welcome.
+**Status:** new. Built for a real fleet of 20+ Claude desktop chats the day a new flagship model launched. Tested with and without the skill in two rounds of 3 cases. Round 1 (who gets which model, "move everything to the small model", "switch my scheduled tasks and confirm"): 6/6 with it, 3.5/6 without. Round 2 ("save, Opus is expensive too, climb effort only when needed", a cheap chat about to send a price to a customer, two failed fixes on a live app): 6/6 with it, 4/6 without; without it, bulk reading stayed on the expensive path, the climb was not reported, and it implied a chat can switch its own model. Plain instructions, no scripts, no network calls. MIT. Issues and suggestions welcome.
 
 ## Install
 
@@ -35,7 +39,7 @@ Or manually: copy `skills/model-per-chat/` into `~/.claude/skills/` for all your
 
 ## Español
 
-**Un modelo para cada chat.** Cuando tienes muchos chats, agentes o tareas programadas, la skill decide cuál lleva el modelo más fuerte, cuál el normal y cuál uno barato o ninguno. Primero lee tus límites y el modelo de cada chat, y revisa las reglas de tu plan en las páginas oficiales. Después le pone a cada chat una nota del 1 al 10 según cuánto cuesta un error ahí. Avisa de las trampas, como un modelo gratis solo hasta cierta fecha o tareas programadas que no respetan el modelo. Solo baja un chat a un modelo más barato después de probarlo con su trabajo real.
+**Un modelo para cada chat.** Cuando tienes muchos chats, agentes o tareas programadas, la skill decide cuál lleva el modelo más fuerte, cuál el normal y cuál uno barato o ninguno. Primero lee tus límites y el modelo de cada chat, y revisa las reglas de tu plan en las páginas oficiales. Después le pone a cada chat una nota del 1 al 10 según cuánto cuesta un error ahí. Avisa de las trampas, como un modelo gratis solo hasta cierta fecha o tareas programadas que no respetan el modelo. Solo baja un chat a un modelo más barato después de probarlo con su trabajo real. Por defecto deja los chats en un modelo barato con poco esfuerzo, y para el paso difícil o el que no tiene vuelta atrás (mandar a un cliente, gastar en anuncios, subir una app) le pasa ese paso al modelo fuerte y regresa.
 
 Instalar: `npx skills add RabbitDesigns22/model-per-chat`
 
