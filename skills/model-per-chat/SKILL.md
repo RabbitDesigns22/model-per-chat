@@ -66,7 +66,7 @@ What climbs on its own already: on current models, adaptive thinking decides per
 |---|---|
 | Routine: read, search, list, summarize, rename, small edit with a test | Stays on its base (mid model, low/medium). Bulk reading of long logs, transcripts or folders goes to a **small-model subagent** that returns only the lines that matter. |
 | Hard: the plan for a change across many files, a bug that survived 2 tries, a design or copy that will go to a paying client, a decision another chat will act on | Hands **that one step** to a **top-model subagent** at high effort (in Claude Code: the Agent tool with `model: "opus"` and `effort: "high"`, or a subagent file with `model: opus`). The brief carries only what that step needs, so the strong model reads little. Then back to base. |
-| Irreversible: send to a customer, pause/spend on ads, deploy a live app, publish, delete | Before doing it, a **top-model check** of the exact action (what, where, the do-not-touch list) at medium/high effort. Cheap, because it is short. The chat acts only if the check passes. |
+| Irreversible: send to a customer, pause/spend on ads, deploy a live app, publish, delete | Before doing it, a **top-model check** of the exact action (what, where, the do-not-touch list) at medium/high effort. Cheap, because it is short. The chat acts only if the check passes **and** the user said yes; the check never replaces that yes. |
 | Second failure on the same thing | Stop retrying on the base model. Escalate as "hard". Two cheap failed tries plus one strong try costs less than five cheap ones. |
 | The owner or a reviewer sends work back | The redo goes to the top model, and the chat notes why so the next similar piece starts there. |
 
