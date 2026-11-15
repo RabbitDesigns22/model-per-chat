@@ -75,7 +75,7 @@ Rules for the climb:
 - Say it in the report in a few words ("plan checked with the strong model") so the owner sees where money went.
 - If the owner types the one-turn keyword their tool offers for deeper thinking (in Claude Code: `ultrathink`), respect it for that turn only.
 - Supervisors and approvers keep the top model as base, but at **low effort** by default, with bulk reading delegated to the small model. Adaptive thinking still goes deep on the turns that need it.
-- Write the escalation rule into each chat's instructions (its project instructions file or its standing order), not only in this skill, so it works when the skill is not loaded.
+- After the owner's ok, write the escalation rule into each chat's instructions (its project instructions file or its standing order), not only in this skill, so it works when the skill is not loaded.
 
 Paste-ready rule for a chat's instructions:
 
