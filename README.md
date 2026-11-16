@@ -27,7 +27,7 @@ The default for a cost-conscious owner: every chat that is not a supervisor runs
 With the [skills CLI](https://skills.sh):
 
 ```bash
-npx skills add RabbitDesigns22/model-per-chat
+npx skills@1.8.1 add https://github.com/RabbitDesigns22/model-per-chat/tree/c65ec0b9555ab7645cc792b67ed373c15e25b622
 ```
 
 Or manually: copy `skills/model-per-chat/` into `~/.claude/skills/` for all your projects, or into `.claude/skills/` for one project.
@@ -41,7 +41,7 @@ Or manually: copy `skills/model-per-chat/` into `~/.claude/skills/` for all your
 
 **Un modelo para cada chat.** Cuando tienes muchos chats, agentes o tareas programadas, la skill decide cuál lleva el modelo más fuerte, cuál el normal y cuál uno barato o ninguno. Primero lee tus límites y el modelo de cada chat, y revisa las reglas de tu plan en las páginas oficiales. Después le pone a cada chat una nota del 1 al 10 según cuánto cuesta un error ahí. Avisa de las trampas, como un modelo gratis solo hasta cierta fecha o tareas programadas que no respetan el modelo. Solo baja un chat a un modelo más barato después de probarlo con su trabajo real. Por defecto deja los chats en un modelo barato con poco esfuerzo, y para el paso difícil o el que no tiene vuelta atrás (mandar a un cliente, gastar en anuncios, subir una app) le pasa ese paso al modelo fuerte y regresa.
 
-Instalar: `npx skills add RabbitDesigns22/model-per-chat`
+Instalar: `npx skills@1.8.1 add https://github.com/RabbitDesigns22/model-per-chat/tree/c65ec0b9555ab7645cc792b67ed373c15e25b622`
 
 ## More skills from the same setup
 
